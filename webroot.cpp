@@ -72,12 +72,46 @@ vector<pos> inline neighbor(pos position) {
     res.push_back(make_pair(position.X, (position.Y == 0 ? 14 : position.Y - 1)));
     res.push_back(make_pair((position.X + 1) % 30, position.Y));
     res.push_back(make_pair((position.X == 0 ? 29 : position.X - 1)), position.Y);
-    return result;
+    return res;
 }
 
-void conn_region(grid board, const vector<pos> positions,
-                 const int & myId) {
+grid conn_region(grid board, const vector<pos> positions, 
+    const int & myId, const int & playerCount, bool avoid = true) {
 
+    grid resboard(15, vector<bool>(30));
+
+    if (avoid) {
+        // remove the neighbor points of other players
+        for (int i = 0; i < playerCount; i++) {
+            if (i != myId) {
+                vector nbhd = neighbor(positions[i]);
+                for (pos p: nbhd) {
+                    board[p.Y][p.X] = 0;
+                }
+            }
+        }
+    }
+
+    queue<pos> sq;
+    sq.push(position[myId]);
+
+    // BFS
+    while (!sq.empty()) {
+
+        pos curr = sq.front();
+        sq.pop();
+
+        for (pos p: neighbor(curr)) {
+            if (!resboard[p.Y][p.X]) {
+                if (board[p.Y][p.X]) {
+                    resboard[p.Y][p.X] = 1;
+                    sq.push[p];
+                }
+            }
+        } // for
+    } // while
+
+    return resboard;
 }
 
 
