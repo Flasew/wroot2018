@@ -1,6 +1,7 @@
 #include <iostream>
 #include <string>
 #include <vector>
+#include <queue>
 #include <algorithm>
 
 #define LEFT "LEFT"
@@ -9,11 +10,16 @@
 #define DOWN "DOWN"
 #define DEPLOY "DEPLOY"
 
+#define X first
+#define Y second
+
 using namespace std;
 typedef pair<int, int> pos;
+typedef vector<vector<bool>> grid;
 /**
  * Don't run into a player's light trail! Use your helper bots at strategic moments or as a last resort to be the last drone standing!
  **/
+
 int main()
 {
     int playerCount; // the number of at the start of this game
@@ -38,7 +44,7 @@ int main()
         int removalCount; // the amount walls removed this turn by helper bots
         cin >> removalCount; cin.ignore();
 
-        bool board[15][30];
+        grid board(15, vector<bool>(30));
 
         for (int r = 0; r < 15; r++)
             for (int c = 0; c < 30; c++)
@@ -59,3 +65,19 @@ int main()
         cout << DOWN << endl;
     }
 }
+
+vector<pos> inline neighbor(pos position) {
+    vector<pos> res;
+    res.push_back(make_pair(position.X, (position.Y + 1) % 15));
+    res.push_back(make_pair(position.X, (position.Y == 0 ? 14 : position.Y - 1)));
+    res.push_back(make_pair((position.X + 1) % 30, position.Y));
+    res.push_back(make_pair((position.X == 0 ? 29 : position.X - 1)), position.Y);
+    return result;
+}
+
+void conn_region(grid board, const vector<pos> positions,
+                 const int & myId) {
+
+}
+
+
