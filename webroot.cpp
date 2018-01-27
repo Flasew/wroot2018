@@ -20,6 +20,10 @@ typedef vector<vector<bool>> grid;
  * Don't run into a player's light trail! Use your helper bots at strategic moments or as a last resort to be the last drone standing!
  **/
 
+vector<pos> inline neighbor(pos position);
+grid conn_region(grid board, const vector<pos> positions, 
+    const int & myId, const int & playerCount, bool avoid);
+
 int main()
 {
     int playerCount; // the number of at the start of this game
