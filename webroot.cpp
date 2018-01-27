@@ -3,8 +3,14 @@
 #include <vector>
 #include <algorithm>
 
+#define LEFT "LEFT"
+#define RIGHT "RIGHT"
+#define UP "UP"
+#define DOWN "DOWN"
+#define DEPLOY "DEPLOY"
+
 using namespace std;
-typedef pos pair<int, int>;
+typedef pair<int, int> pos;
 /**
  * Don't run into a player's light trail! Use your helper bots at strategic moments or as a last resort to be the last drone standing!
  **/
@@ -50,6 +56,6 @@ int main()
 
 
         // DOWN | LEFT | RIGHT | UP or DEPLOY (to clear walls)
-        cout << "DOWN" << endl;
+        cout << DOWN << endl;
     }
 }
