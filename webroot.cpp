@@ -48,7 +48,7 @@ int main()
             int removeX; // the coordinates of a wall removed this turn
             int removeY;
             cin >> removeX >> removeY; cin.ignore();
-            board[removeX][removeY] =  0;
+            board[removeY][removeX] =  0;
         }
 
         // Write an action using cout. DON'T FORGET THE "<< endl"
