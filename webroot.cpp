@@ -264,14 +264,14 @@ outofshit:
 
         // DOWN | LEFT | RIGHT | UP or DEPLOY (to clear walls)
         // cerr << maxIndex << endl;
-        if (avail[maxIndex] >= 350) {
+        if (avail[maxIndex] >= 300) {
             survival = false;
         }
         else {
             survival = true;
         }
         if ((score[maxIndex] == INT_MIN 
-            || (dscore*1.0/avail[maxIndex] >= 3.5 && avail[maxIndex] <= 200)
+            || (dscore*1.0/avail[maxIndex] >= 3.8 && avail[maxIndex] <= 200)
             || avail[maxIndex] <= 1) && helperBots > 0) {
             maxIndex = 4;
             survival = true;
